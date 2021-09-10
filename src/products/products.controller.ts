@@ -17,9 +17,20 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
+
   @Get(':title')
   findOne(@Param('title') title: string) {
     return this.productsService.findOne(title);
+  }
+
+  // @Get(':searchcriteria/:serchterm')
+  // find(@Param('title') title: string) {
+  //   return this.productsService.findOne(title);
+  // }
+  @Get('/:searchcriteria/:searchterm')
+  async findMany(@Param('searchcriteria') searchcriteria: string, @Param('searchterm') searchterm: string) {
+    //return "blalba";
+    return this.productsService.findMany(searchcriteria, searchterm);
   }
 
   // @Patch(':id')
@@ -27,8 +38,8 @@ export class ProductsController {
   //   return this.productsService.update(+id, updateProductDto);
   // }
 
-  @Delete(':title')
-  remove(@Param('title') title: string) {
-    return this.productsService.remove(title);
-  }
+  // @Delete(':title')
+  // remove(@Param('title') title: string) {
+  //   return this.productsService.remove(title);
+  // }
 }

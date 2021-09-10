@@ -28,4 +28,8 @@ export class ProductsService {
   remove(title: string) {
     return this.productModel.deleteOne({title: title});
   }
+
+  findMany(searchcriteria: string, searchterm: string){
+    return this.productModel.find({[searchcriteria]: searchterm});
+  }
 }
